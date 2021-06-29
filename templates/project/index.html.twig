@@ -1,0 +1,57 @@
+
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Project index{% endblock %}
+
+
+{% block body %}
+    <div class="container">
+        <section>
+            <div class="mt-5 text-center">
+                <h1>Tous vos projets </h1>
+             </div>
+        </section>
+    <section id="new" class="p-5">
+        <div class="row mt-2">
+        {% for project in projects %}
+        <div class="card-deck col-lg-4">
+        <center>
+        <a href="#myModal{{ loop.index }}" data-bs-target="#myModal{{ loop.index }}" data-bs-toggle="modal" class=" btn bg-white rounded align-center"> En savoir plus </a>
+                    <div class="modal fade" id="myModal{{ loop.index }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class=" modal-header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">{{project.title}}</h5>
+                                </div>
+                                <div class="modal-body ">
+				                    <div class="card col m-3" style="width: 18rem;">
+                                     <div class="card-body">
+                                      <div class="text-center">
+                                        <h5 class="card-title"> {{ project.author }}</h5>
+                                        <p class="card-text">{{ project.description }} : {{ project.createdAt ? project.createdAt|date('Y-m-d') : '' }}</p> 
+                                        <a href="{{ path("project_show", { slug: project.slug }) }}" class="btn btn-primary">Voir la fiche</a>
+                                     </div>
+                                    </div>
+                                 </div>
+                                </div>
+                             </div>
+
+                         </div>
+                    </div>
+        </div>
+        </center>
+    {% else %}
+        Aucun projet trouvé.
+    {% endfor %}
+        </div>
+    </section>
+    </div>
+    
+<div class="mb-5 text-center">
+    <button type="button" class="btn btn-light"><a href="{{ path('project_new') }}"><h5>Ajouter un projet</h5></a></button>
+</div>
+<div class="p-5 text-end">
+<button type="button" class="btn btn-light"><a href="{{ path('home') }}"> Retour à l'accueil </a></button>
+</div>
+{% endblock %}

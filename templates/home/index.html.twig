@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+ <center>
+    <div class="container">
+    <h1 class="pres">Trouvez votre futur collaborateur </h1>
+      <div href="https://www.ladn.eu/wp-content/uploads/2020/09/fiverr-nouvelle-campagne-marque-identite.jpg">
+
+      <div class="cadre">
+    </div>
+    <div class ="row">
+       <div class="col-6">
+       	<a href="{{ path("project_show") }}" class="btn btn-primary">Voir les projet</a>
+       </div>
+       <div class="col-6">
+       						<a href="{{ path("project_new")}}" class="btn btn-primary">Inserer un project</a>
+
+       </div>
+    </div>
+  </div>
+  </center>
+  {% include '_footer.html.twig' %}
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,61 @@
+@font-face {
+    font-family: 'Macan';
+    src: url('assets/Fiverr Fonts/Macan/TFF/Macan-Regular.ttf');
+}
+
+body {
+    background-color: rgba(231, 231, 231, 0.883);
+}
+
+.pres {
+    margin-top: 5%;
+    text-align: center;
+    font-family: 'Macan';
+}
+
+.cadre {
+    background-color: #1dbf73;
+    height: 30rem;
+    margin-top: 8%;
+    width: 100%;
+    line-height: 15rem;
+}
+
+.btn {
+    background-color: rgb(122, 206, 134);
+    border: none;
+    border-radius: 50px;
+    margin-top: 10%;
+    text-decoration: none;
+    width: auto;
+    height: auto;
+    margin-bottom: 10%;
+}
+
+.card-body {
+    height: 20rem;
+    width: 100%;
+    text-overflow: ellipsis;
+}
+
+.card-title {
+    height: 5rem;
+    width: 80%;
+    text-overflow: ellipsis;
+}
+
+.card {
+    text-overflow: ellipsis;
+}
+
+.card-text {
+    height: 5rem;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.form-control {
+    background-color: lightgrey;
+}
