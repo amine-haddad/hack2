@@ -7,10 +7,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Project;
 use App\Entity\Competence;
-use App\Entity\Freelaceur;
-use App\Entity\Freelancer;
 use App\Repository\ProjectRepository;
-use App\Repository\FreelancerRepository;
+// use App\Repository\FreelancerRepository;
 use App\Repository\CompetenceRepository;
 use App\Service\Slugify;
 
@@ -23,11 +21,11 @@ class HomeController extends AbstractController
     
     public function __construct(
         CompetenceRepository $competenceRepository ,
-        FreelancerRepository $freelancerRepository, 
+        // FreelancerRepository $freelancerRepository, 
         ProjectRepository $projectRepository)
     {
         $this->competenceRepository = $competenceRepository;
-        $this->freelanceurRepository = $freelancerRepository;
+        // $this->freelanceurRepository = $freelancerRepository;
         $this->projectRepository = $projectRepository;
     }
     /**

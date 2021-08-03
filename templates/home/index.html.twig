@@ -1,37 +1,29 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Hello HomeController!
+{% endblock %}
 
 {% block body %}
- <center>
-    <div class="container">
-    <h1 class="pres">Trouvez votre futur collaborateur </h1>
-      <div href="https://www.ladn.eu/wp-content/uploads/2020/09/fiverr-nouvelle-campagne-marque-identite.jpg">
+	<center>
+		<div class="container">
+			<h1 class="pres">Find your future collaborator
+			</h1>
+			<div class="cadre">
+				<h1 class="title split-character">Your FIVERR extension</h1>
+				<div class="container-fluid">
+					<img src="{{ asset('build/collaboration.png') }}" class="rounded-circle" alt="">
+				</div>
 
-      <div class="cadre">
-    </div>
-    <div class ="row">
-       <div class="col-6">
-       	<a href="{{ path("project_show") }}" class="btn btn-primary">Voir les projet</a>
-       </div>
-       <div class="col-6">
-       						<a href="{{ path("project_new")}}" class="btn btn-primary">Inserer un project</a>
+			</div>
+			<div class="row">
+				<div class="col-6">
+					<a href="{{ path("project_index") }}" class="btn btn-success">See the projects</a>
+				</div>
+				<div class="col-6">
+					<a href="{{ path("project_new")}}" class="btn btn-success">Insert a new project</a>
 
-       </div>
-    </div>
-  </div>
-  </center>
-  {% include '_footer.html.twig' %}
-
-
-
-
-
-
-
-
-
-
-
-
+				</div>
+			</div>
+		</div>
+	</center>
 {% endblock %}

@@ -3,36 +3,61 @@
 namespace App\Controller;
 use App\Entity\Competence;
 use App\Entity\Freelancer;
-use App\Entity\Freelanceur;
 
 use App\Entity\Project;
 use App\Form\ProjectType;
 use App\Repository\ProjectRepository;
 use App\Repository\CompetenceRepository;
-
+use App\Repository\FreelancerRepository;
+use Doctrine\ORM\Mapping as ORM;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Service\Slugify;
 
+
+
 /**
- * @Route("/project")
+ * @Route("/project", name="project")
  */
 class ProjectController extends AbstractController
 {
-    /**
-     * @Route("/", name="project_index", methods={"GET"})
-     */
-    public function index(ProjectRepository $projectRepository): Response
+    private $competenceRepository;
+    private $freelancerRepository;
+    private $projectRepository;
+    
+    public function __construct(
+        CompetenceRepository $competenceRepository ,
+        FreelancerRepository $freelancerRepository, 
+        ProjectRepository $projectRepository)
     {
+        $this->competenceRepository = $competenceRepository;
+        $this->freelanceurRepository = $freelancerRepository;
+        $this->projectRepository = $projectRepository;
+    }
+    /**
+     * @Route("/", name="_index", methods={"GET"})
+     */
+    public function index(): Response
+    {
+        $projects=$this->getDoctrine()
+        ->getRepository(Project::class)
+        ->findAll();
+        $competences=$this->getDoctrine()
+        ->getRepository(Competence::class)
+        ->findAll();
+
         return $this->render('project/index.html.twig', [
-            'projects' => $projectRepository->findAll(),
+            'projects' => $projects,
+            'competences' => $competences,
+
         ]);
     }
 
     /**
-     * @Route("/new", name="project_new", methods={"GET","POST"})
+     * @Route("/new", name="_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -56,7 +81,7 @@ class ProjectController extends AbstractController
     }
 
     /**
-     * @Route("/", name="project_show", methods={"GET"})
+     * @Route("/show", name="_show", methods={"GET"})
      */
     public function show(Project $project,  Competence $competence, Freelancer $freelancer): Response
     {
@@ -67,6 +92,18 @@ class ProjectController extends AbstractController
 
         ]);
     }
+    /**
+     * @Route("/{id}", name="_show_unity", requirements={"id"="\d+"}, methods={"GET"})
+     */
+    public function show_unity(Project $project): Response
+    {
+        return $this->render('project/show_unity.html.twig', [
+            'project' => $project,
+            
+
+        ]);
+    }
+
 
     /**
      * @Route("/{id}/edit", name="project_edit", methods={"GET","POST"})
@@ -101,5 +138,5 @@ class ProjectController extends AbstractController
 
         return $this->redirectToRoute('project_index');
     }
-
 }
+        

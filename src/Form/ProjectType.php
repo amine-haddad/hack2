@@ -24,9 +24,6 @@ class ProjectType extends AbstractType
             ->add('description', null, array('attr' => array
             ( 'style' => 'border-radius:1rem;
             height:2.5rem; background-color:#ebebeb; text-align:center')))
-            ->add('slug', null, array('attr' => array
-            ( 'style' => 'border-radius:1rem;
-            height:2.5rem; background-color:#ebebeb; text-align:center')))
             ->add('createdAt', null, array('attr' => array
         ( 'style' => 'border-radius:1rem;
          ')))

@@ -60,6 +60,11 @@ class Project
         $this->competence = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+        return $this->getCompetence() ?: '';
+    }
+
     public function getId(): ?int
     {
         return $this->id;
